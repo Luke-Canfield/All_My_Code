@@ -1,0 +1,16 @@
+a
+Hello my name is Luke.
+I am 20 years old!
+We like percentages %
+I have a 70% chance of getting a 90% on my exam.
+In hex I have 0x1C7 cypto coins...
+-7890 in binary is -0b1111011010010 and in octal is -17322
+The dog's name is Clifford Jr.
+Bob's comb costed him $0.02!
+Her socks were on sale for $0.46.
+The discount was -$0.05.
+The difference was -$0.34.
+His credit card statement reads -$7.83!!
+She made $75000.00 in 2020!
+There was $21474836.47 found in the ocean.
+Excess parameter verification 123
