@@ -1,0 +1,36 @@
+        -:    0:Source:huffman.c
+        -:    0:Programs:3
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stdbool.h>
+        -:    4:#include <assert.h>
+        -:    5:#include "huffman.h"
+        -:    6:
+       15:    7:static int _compare_for_freqs(const void* o1, const void* o2) {
+       15:    8:	TreeNode* tree1 = (TreeNode *)o1;
+       15:    9:	TreeNode* tree2 = (TreeNode *)o2;
+       15:   10:	if((tree1 -> frequency) - (tree2 -> frequency) != 0) {
+       11:   11:		return ((tree1 -> frequency) - (tree2 -> frequency));
+        -:   12:	}
+        -:   13:	else {
+        4:   14:		return ((tree1 -> character) - (tree2 -> character));
+        -:   15:	}
+        -:   16:	//return (*(const int *)o1 - *(const int*)o2 );
+        -:   17:}
+        -:   18:
+        2:   19:Node* make_huffman_pq(Frequencies freqs) {
+        2:   20:	Node* head = NULL;
+      514:   21:	for(int n = 0; n<= 255; n++) {
+      512:   22:		if(freqs[n] != 0) {
+        9:   23:			TreeNode* tree = malloc(sizeof(*tree));
+        9:   24:			*tree = (TreeNode) { .frequency = freqs[n], .character = n };
+        -:   25:			//printf("freq = %ld  ", tree -> frequency);
+        -:   26:			//printf("character = %c\n", tree -> character);
+        9:   27:			pq_enqueue(&head, tree, _compare_for_freqs);
+        -:   28:		}
+        -:   29:	}
+        -:   30:			
+        2:   31:	return head;
+        -:   32:}
+        -:   33:	
+        -:   34:/* vim: set tabstop=4 shiftwidth=4 fileencoding=utf-8 noexpandtab: */

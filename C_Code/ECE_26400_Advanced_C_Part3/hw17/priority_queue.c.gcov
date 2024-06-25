@@ -1,0 +1,54 @@
+        -:    0:Source:priority_queue.c
+        -:    0:Programs:3
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stdbool.h>
+        -:    4:#include <assert.h>
+        -:    5:#include "priority_queue.h"
+        -:    6:
+        9:    7:Node* pq_enqueue(Node** a_head, void* a_value, int (*cmp_fn)(const void*, const void*)) {
+        9:    8:	Node* new_node = malloc(sizeof(*new_node));
+        9:    9:	*new_node = (Node) { .a_value = a_value, .next = *a_head };
+        -:   10:	
+        9:   11:	if(*a_head == NULL || cmp_fn == NULL || cmp_fn(a_value, (*a_head) -> a_value) < 0) {
+        4:   12:		*a_head = new_node;
+        -:   13:	}
+        -:   14:	else {
+        5:   15:		Node* before_node = *a_head;
+       11:   16:		while(before_node -> next != NULL && cmp_fn(a_value, before_node -> next -> a_value) >= 0) {
+        6:   17:			before_node = before_node -> next;
+        -:   18:		}
+        5:   19:		new_node -> next = before_node -> next;
+        5:   20:		before_node -> next  = new_node;
+        -:   21:	}		
+        9:   22:	return new_node;
+        -:   23:}
+        -:   24:
+        9:   25:Node* pq_dequeue(Node** a_head) {
+        9:   26:	Node* removed_node = *a_head;
+        9:   27:	if(*a_head != NULL) {
+        9:   28:		*a_head = (*a_head) -> next;
+        9:   29:		(removed_node) -> next = NULL;
+        -:   30:	}
+        9:   31:	return removed_node;
+        -:   32:}
+        -:   33:
+    #####:   34:Node* stack_push(Node** a_head, void* a_value) {
+    #####:   35:	return pq_enqueue(a_head, a_value, NULL);
+        -:   36:}
+        -:   37:
+        9:   38:Node* stack_pop(Node** a_head) {
+        9:   39:	return pq_dequeue(a_head);
+        -:   40:}
+        -:   41:
+        2:   42:void destroy_list(Node** a_head, void (*destroy_value_fn)(void*)) {
+        -:   43:	Node* old_head;
+       11:   44:	while(*a_head != NULL) {
+        9:   45:		old_head = stack_pop(a_head);
+        9:   46:		destroy_value_fn(old_head -> a_value);
+        9:   47:		free(old_head);
+        -:   48:	}
+        2:   49:}
+        -:   50:
+        -:   51://#define HUFFMAN_C_V1
+        -:   52:/* vim: set tabstop=4 shiftwidth=4 fileencoding=utf-8 noexpandtab: */

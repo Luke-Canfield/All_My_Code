@@ -1,0 +1,59 @@
+        -:    0:Source:huffman.c
+        -:    0:Graph:huffman.gcno
+        -:    0:Data:huffman.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <stdbool.h>
+        -:    4:#include <assert.h>
+        -:    5:#include "huffman.h"
+        -:    6:
+       16:    7:Node* pq_enqueue(Node** a_head, void* a_value, int (*cmp_fn)(const void*, const void*)) {
+       16:    8:	Node* new_node = malloc(sizeof(*new_node));
+       16:    9:	*new_node = (Node) { .a_value = a_value, .next = *a_head };
+        -:   10:	
+       16:   11:	if(*a_head == NULL || cmp_fn == NULL || cmp_fn(a_value, (*a_head) -> a_value) < 0) {
+       11:   12:		*a_head = new_node;
+        -:   13:	}
+        -:   14:	else {
+        -:   15:		//(*a_head) -> next = new_node;
+        -:   16:		//Node* new_head = a_head;
+        5:   17:		Node* before_node = *a_head;
+       10:   18:		while(before_node -> next != NULL && cmp_fn(a_value, before_node -> next -> a_value) >= 0) {
+        5:   19:			before_node = before_node -> next;
+        -:   20:		}
+        5:   21:		new_node -> next = before_node -> next;
+        5:   22:		before_node -> next  = new_node;
+        -:   23:	}		
+       16:   24:	return new_node;
+        -:   25:}
+        -:   26:
+       16:   27:Node* pq_dequeue(Node** a_head) {
+       16:   28:	Node* removed_node = *a_head;
+       16:   29:	if(*a_head != NULL) {
+       16:   30:		*a_head = (*a_head) -> next;
+       16:   31:		(removed_node) -> next = NULL;
+        -:   32:	}
+       16:   33:	return removed_node;
+        -:   34:}
+        -:   35:
+    #####:   36:Node* stack_push(Node** a_head, void* a_value) {
+    #####:   37:	return pq_enqueue(a_head, a_value, NULL);
+        -:   38:}
+        -:   39:
+       16:   40:Node* stack_pop(Node** a_head) {
+       16:   41:	return pq_dequeue(a_head);
+        -:   42:}
+        -:   43:
+        4:   44:void destroy_list(Node** a_head, void (*destroy_value_fn)(void*)) {
+        -:   45:	Node* old_head;
+       20:   46:	while(*a_head != NULL) {
+       16:   47:		old_head = stack_pop(a_head);
+       16:   48:		destroy_value_fn(old_head -> a_value);
+       16:   49:		free(old_head);
+        -:   50:	}
+        4:   51:}
+        -:   52:
+        -:   53://#define HUFFMAN_C_V1
+        -:   54:/* vim: set tabstop=4 shiftwidth=4 fileencoding=utf-8 noexpandtab: */

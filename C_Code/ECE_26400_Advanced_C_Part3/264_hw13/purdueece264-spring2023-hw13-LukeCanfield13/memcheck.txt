@@ -1,0 +1,80 @@
+==56870== Memcheck, a memory error detector
+==56870== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==56870== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==56870== Command: ./hw13 inputs/test3
+==56870== Parent PID: 56869
+==56870== 
+--56870-- 
+--56870-- Valgrind options:
+--56870--    --tool=memcheck
+--56870--    --log-file=memcheck.txt
+--56870--    --leak-check=full
+--56870--    --verbose
+--56870-- Contents of /proc/version:
+--56870--   Linux version 3.10.0-1160.88.1.el7.x86_64 (mockbuild@kbuilder.bsys.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC) ) #1 SMP Tue Mar 7 15:41:52 UTC 2023
+--56870-- 
+--56870-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--56870-- Page sizes: currently 4096, max supported 4096
+--56870-- Valgrind library directory: /usr/libexec/valgrind
+--56870-- Reading syms from /home/shay/a/lcanfiel/264_hw13/purdueece264-spring2023-hw13-LukeCanfield13/hw13
+--56870-- Reading syms from /usr/lib64/ld-2.17.so
+--56870--   Considering /usr/lib/debug/.build-id/62/c449974331341bb08dcce3859560a22af1e172.debug ..
+--56870--   .. build-id is valid
+--56870-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--56870--    object doesn't have a symbol table
+--56870--    object doesn't have a dynamic symbol table
+--56870-- Scheduler: using generic scheduler lock implementation.
+--56870-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==56870== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-56870-by-lcanfiel-on-ececomp4.ecn.purdue.edu
+==56870== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-56870-by-lcanfiel-on-ececomp4.ecn.purdue.edu
+==56870== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-56870-by-lcanfiel-on-ececomp4.ecn.purdue.edu
+==56870== 
+==56870== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==56870== don't want to do, unless you know exactly what you're doing,
+==56870== or are doing some strange experiment):
+==56870==   /usr/libexec/valgrind/../../bin/vgdb --pid=56870 ...command...
+==56870== 
+==56870== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==56870==   /path/to/gdb ./hw13
+==56870== and then give GDB the following command
+==56870==   target remote | /usr/libexec/valgrind/../../bin/vgdb --pid=56870
+==56870== --pid is optional if only one valgrind process is running
+==56870== 
+--56870-- REDIR: 0x4019e40 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c7ed5 (???)
+--56870-- REDIR: 0x4019c10 (ld-linux-x86-64.so.2:index) redirected to 0x580c7eef (???)
+--56870-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--56870-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==56870== WARNING: new redirection conflicts with existing -- ignoring it
+--56870--     old: 0x04019e40 (strlen              ) R-> (0000.0) 0x580c7ed5 ???
+--56870--     new: 0x04019e40 (strlen              ) R-> (2007.0) 0x04c2d1b0 strlen
+--56870-- REDIR: 0x4019dc0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2e300 (strcmp)
+--56870-- REDIR: 0x401aa80 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c31f90 (mempcpy)
+--56870-- Reading syms from /usr/lib64/libc-2.17.so
+--56870--   Considering /usr/lib/debug/.build-id/94/70e279388f7f9cb2ed3b2872d0c2095b191ff4.debug ..
+--56870--   .. build-id is valid
+--56870-- REDIR: 0x4ec71d0 (libc.so.6:strcasecmp) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--56870-- REDIR: 0x4ec3f40 (libc.so.6:strnlen) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--56870-- REDIR: 0x4ec94d0 (libc.so.6:strncasecmp) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--56870-- REDIR: 0x4ec69a0 (libc.so.6:memset) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--56870-- REDIR: 0x4ec6950 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--56870-- REDIR: 0x4ec5930 (libc.so.6:__GI_strrchr) redirected to 0x4c2cb70 (__GI_strrchr)
+--56870-- REDIR: 0x4ebc740 (libc.so.6:malloc) redirected to 0x4c29eec (malloc)
+--56870-- REDIR: 0x4edca10 (libc.so.6:__GI_strstr) redirected to 0x4c32220 (__strstr_sse2)
+--56870-- REDIR: 0x4ec6030 (libc.so.6:memchr) redirected to 0x4c2e3a0 (memchr)
+--56870-- REDIR: 0x4ecbc30 (libc.so.6:__GI_memcpy) redirected to 0x4c2efb0 (__GI_memcpy)
+--56870-- REDIR: 0x4ec2300 (libc.so.6:index) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--56870-- REDIR: 0x4f75f10 (libc.so.6:__strchr_sse42) redirected to 0x4c2cd60 (index)
+--56870-- REDIR: 0x4ec3850 (libc.so.6:strcpy) redirected to 0x4a247a0 (_vgnU_ifunc_wrapper)
+--56870-- REDIR: 0x4ed17d0 (libc.so.6:__strcpy_sse2_unaligned) redirected to 0x4c2d1d0 (strcpy)
+--56870-- REDIR: 0x4ebcb60 (libc.so.6:free) redirected to 0x4c2afe6 (free)
+--56870-- REDIR: 0x4ec3e60 (libc.so.6:__GI_strlen) redirected to 0x4c2d110 (__GI_strlen)
+--56870-- REDIR: 0x4ecd4b0 (libc.so.6:strchrnul) redirected to 0x4c31ab0 (strchrnul)
+--56870-- REDIR: 0x4ec6b70 (libc.so.6:__GI_mempcpy) redirected to 0x4c31cc0 (__GI_mempcpy)
+==56870== 
+==56870== HEAP SUMMARY:
+==56870==     in use at exit: 0 bytes in 0 blocks
+==56870==   total heap usage: 7 allocs, 7 frees, 744 bytes allocated
+==56870== 
+==56870== All heap blocks were freed -- no leaks are possible
+==56870== 
+==56870== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
