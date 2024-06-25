@@ -1,0 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENGR 132 
+% Script for A11 Problem 1: MATLAB Skills - Removing Loops
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% ____________________
+%% SOLUTION WITH NO LOOP
+vec = [15, 40, -6, 49, 31, -17, 9, -22, 13, 34];
+vec1 = [15,9,13];
+vec2 = [40,-6,49,31,-17,-22,34];
+vec3 = (6 ./ (vec1 + 2)) ./ (6 .* vec1.^2 + 9);
+vec4 = (9 .* vec2.^3) ./ (3 + 4 ./ vec2);
+newvec_noLoop = [vec3(:,1),vec4(:,1),vec4(:,2),vec4(:,3),vec4(:,4),...
+    vec4(:,5),vec3(:,2),vec4(:,6),vec3(:,3),vec4(:,7)];
+disp(newvec_noLoop)
+
+
+%% Luke Canfield
+%% ACADEMIC INTEGRITY STATEMENT
+% I have not used source code obtained from any other unauthorized
+% source, either modified or unmodified.  I have not provided
+% access to my code to anyone in any way. The script I am 
+% submitting is my own original work.
