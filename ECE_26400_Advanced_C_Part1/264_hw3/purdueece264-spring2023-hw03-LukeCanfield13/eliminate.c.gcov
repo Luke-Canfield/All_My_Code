@@ -1,0 +1,86 @@
+        -:    0:Source:eliminate.c
+        -:    0:Graph:eliminate.gcno
+        -:    0:Data:eliminate.gcda
+        -:    0:Runs:2
+        -:    0:Programs:1
+        -:    1:// ***
+        -:    2:// *** You MUST modify this file
+        -:    3:// ***
+        -:    4:
+        -:    5:#include <stdio.h>
+        -:    6:#include <stdbool.h>
+        -:    7:#include <stdlib.h> 
+        -:    8:#include <string.h> 
+        -:    9:
+        -:   10:#ifdef TEST_ELIMINATE
+        -:   11:// 100% of the score
+        2:   12:void eliminate(int n, int k)
+        -:   13:{
+        -:   14:  // allocate an arry of n elements
+        2:   15:  int * arr = malloc(sizeof(* arr) * n);
+        -:   16:  // check whether memory allocation succeeds.
+        -:   17:  // if allocation fails, stop
+        2:   18:  if (arr == NULL)
+        -:   19:    {
+    #####:   20:      fprintf(stderr, "malloc fail\n");
+        2:   21:      return;
+        -:   22:    }
+        -:   23:  // initialize all elements
+       33:   24:  for(int i = 0; i < n; i++) {
+       31:   25:	  arr[i] = 0;
+        -:   26:  }
+        -:   27:
+        -:   28:  // counting to k,
+        -:   29:  // mark the eliminated element
+        -:   30:  // print the index of the marked element
+        -:   31:  // repeat until only one element is unmarked
+        -:   32:
+        2:   33:  int stop = 0; //indicates when to stop loop
+        2:   34:  int index = 0; //array index
+        2:   35:  int count = 1; //variable to count to k
+        -:   36:
+      427:   37:  while(stop != (n - 1)) {
+      423:   38:  	if(index > (n - 1)) {
+       19:   39:		index = 0;
+        -:   40:	}
+      423:   41:  	if(count == k) {
+       29:   42:  		if(arr[index] == 0) {
+       17:   43:			printf("%d\n",index);
+       17:   44:			arr[index] = 1;
+       17:   45:			count = 1;
+       17:   46:			index = index + 1;
+       17:   47:			stop++;
+        -:   48:		}
+        -:   49:		else {
+       87:   50:			while(arr[index] == 1) {
+       63:   51:				index = index + 1;
+       63:   52:				if(index > (n - 1)) {
+        2:   53:					index = 0;
+        -:   54:				}
+        -:   55:			}
+       12:   56:			printf("%d\n",index);
+       12:   57:			arr[index] = 1;
+       12:   58:			count = 1;
+       12:   59:			index = index + 1;
+       12:   60:			stop++;
+        -:   61:		}
+        -:   62:   }
+        -:   63:   else {
+      394:   64:	  if(arr[index] != 1) {
+      154:   65:		  count++;
+        -:   66:	  }
+      394:   67:	  index++;
+        -:   68:   }
+        -:   69:  }
+        -:   70:
+        -:   71:  // print the last one
+       33:   72:  for(int j = 0; j < n; j++) {
+       31:   73:	  if(arr[j] == 0) {
+        2:   74:		  printf("%d\n", j);
+        -:   75:	  }
+        -:   76:  }
+        -:   77:
+        -:   78:  // release the memory of the array
+        2:   79:  free (arr);
+        -:   80:}
+        -:   81:#endif

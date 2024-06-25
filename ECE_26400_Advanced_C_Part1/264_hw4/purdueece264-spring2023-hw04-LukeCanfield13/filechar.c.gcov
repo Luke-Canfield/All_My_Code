@@ -1,0 +1,74 @@
+        -:    0:Source:filechar.c
+        -:    0:Graph:filechar.gcno
+        -:    0:Data:filechar.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// ***
+        -:    2:// *** You MUST modify this file
+        -:    3:// ***
+        -:    4:
+        -:    5:#include <stdio.h>
+        -:    6:#include <stdbool.h>
+        -:    7:
+        -:    8:#ifdef TEST_COUNTCHAR
+        1:    9:bool countChar(char * filename, int * counts, int size)
+        -:   10:{
+        -:   11:  // open a file whose name is filename for reading
+        -:   12:  FILE* fp;
+        1:   13:  fp = fopen(filename, "r");
+        -:   14:
+        -:   15:  // if fopen fails, return false. Do NOT fclose
+        1:   16:  if(fp == NULL) {
+        1:   17:	  return false;
+        -:   18:  }
+        -:   19:  // if fopen succeeds, read every character from the file
+        -:   20:  // if a character (call it onechar) is between
+        -:   21:  // 0 and size - 1 (inclusive), increase
+        -:   22:  // counts[onechar] by one
+        -:   23:  // You should *NOT* assume that size is 256
+        -:   24:  
+        -:   25:  int onechar;
+    #####:   26:  while((onechar = fgetc(fp)) != EOF) {
+    #####:   27:	  if(onechar >= 0 && onechar <= (size - 1)) {
+    #####:   28:		  counts[onechar]++;
+        -:   29:	  }
+        -:   30:  }
+        -:   31:
+        -:   32:  // reemember to call fclose
+    #####:   33:  fclose(fp);
+        -:   34:
+        -:   35:  // you may assume that counts already initialized to zero
+        -:   36:  // size is the size of counts
+        -:   37:  // you may assume that counts has enough memory space
+        -:   38:  //
+        -:   39:  // hint: use fgetc
+        -:   40:  // Please read the document of fgetc carefully, in particular
+        -:   41:  // when reaching the end of the file
+        -:   42:  //
+    #####:   43:  return true;
+        -:   44:}
+        -:   45:#endif
+        -:   46:
+        -:   47:#ifdef TEST_PRINTCOUNTS
+    #####:   48:void printCounts(int * counts, int size)
+        -:   49:{
+        -:   50:  // print the values in counts in the following format
+        -:   51:  // each line has three items:
+        -:   52:  // ind, onechar, counts[ind]
+        -:   53:  // ind is between 0 and size - 1 (inclusive)
+        -:   54:  // onechar is printed if ind is between 'a' and 'z' or
+        -:   55:  // 'A' and 'Z'. Otherwise, print space
+        -:   56:  // if counts[ind] is zero, do not print
+    #####:   57:  for(int i = 0; i < size; i++) {
+    #####:   58:	  if(counts[i] == 0) {
+        -:   59:
+        -:   60:	  }
+    #####:   61:	  else if((i >= 97 && i <= 122) || (i >= 65 && i <= 90)) {
+    #####:   62:		  printf("%d, %c, %d\n", i, i, counts[i]);
+        -:   63:	  }
+        -:   64:	  else {
+    #####:   65:		  printf("%d, %c, %d\n", i, ' ', counts[i]);
+        -:   66:	  }
+        -:   67:  }
+    #####:   68:}
+        -:   69:#endif
