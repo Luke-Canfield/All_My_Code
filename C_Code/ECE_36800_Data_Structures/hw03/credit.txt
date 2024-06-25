@@ -1,0 +1,27 @@
+Q1: If you modeled your partition function or any other code after something you
+	found online (or anywhere else), list the author and URL, and how you used it.
+A1:  Geeks for Geeks, geeksforgeeks.org/c-program-swap-two-numbers/
+I used a similar strategy to the first program which swapped two ints. It's a very 
+simple function but I needed a refresher on swapping variables in general.
+
+Q2: Did you use any GenAI tools (e.g., ChatGPT)?  How?
+A2: I used ChatGPT to look up the qsort function in C to remember how it works since it 
+was used in the test_get_kth_smallest function. I couldn't figure out if the array 
+was being sorted with q_sort before being passed into get_kth_smallest so I got a quick
+refresher on what was actually happening.
+
+################################################################################
+# Some parts of this assignment are similar to code you can find online or
+# obtain through GenAI (e.g., ChatGPT).  You are allowed to look at them,
+# and even follow a similar strategy, if:
+#  a) You can do so without "copying" (by any means),
+#  b) It will not hurt your learning opportunity, and
+#  c) You disclose any resources you used in this file.
+# 
+# Note:  Copying and then modifying variable names and format to conceal the
+# fact that you copied is still not okay.  But if you want to look at some code
+# and express a similar strategy in your own way, in your own code, that is fine.
+#
+# As long as you are transparent in this file, we will give you the benefit of
+# any doubt.
+################################################################################

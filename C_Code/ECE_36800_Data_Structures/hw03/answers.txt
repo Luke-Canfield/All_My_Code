@@ -1,0 +1,23 @@
+Q1: How do you know that your TEST_NUMBERS_O_N results in O(n)
+    running time of get_kth_smallest(…)?
+
+A1: I determined that TEST_NUMBERS_O_N resuled in O(n) running time because 
+the TEST_NUMBERS_O_N elements are shuffled and the last element in the array is 9 
+which will be chosen as the pivot value by the partition function in get_kth_smallest(...)
+This means that on average the array will be divided in half each time the partition function 
+is called making the time complexity = n + n/2 + n/4 + n/8 ... which evaluates to n making the 
+running time O(n).
+
+Q2: How did you determine that your TEST_NUMBERS_O_N_2 results in O(n²)
+    running time of get_kth_smallest(…)?
+
+A2: I determined that TEST_NUMBERS_O_N_2 resulted in O(n²) running time because
+since TEST_NUMBERS_O_N_2 is already ordered and my partition function chooses the last element
+in the array as the pivot value, this will cause the worst case running time to happen. 
+Each partition will only reduce by 1 element so we have n levels of recursion with n+(n-1)+(n-2)... elements
+so the total run time for all levels will be O(n²).
+
+# We might grade this for completion, if we are unable to find a reasonable way
+# to grade it for correctness.  We will not know until we see the responses.
+# Either way, we believe thinking through this will benefit you, and we do not
+# expect this part to take very much time.
